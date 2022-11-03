@@ -3,9 +3,9 @@ using AspxToCode.Parser;
 
 namespace AspxToCode
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -15,7 +15,6 @@ namespace AspxToCode
             var source = txtSource.Text;
 
             var code = Html.ParseHtml(source);
-            
 
             txtDest.Text = string.Join(Environment.NewLine, code);
         }
