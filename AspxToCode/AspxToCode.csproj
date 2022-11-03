@@ -28,7 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SgmlReader\SgmlReader.csproj" />
+    <ProjectReference Include="..\Libraries\SgmlReader\SgmlReader.csproj" />
+    <ProjectReference Include="..\Libraries\XmlFilter\XmlFilter.csproj" />
   </ItemGroup>
 
 </Project>
