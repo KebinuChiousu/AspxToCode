@@ -1,23 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using AngleSharp;
 using AngleSharp.Dom;
+using HtmlAgilityPack;
 
 namespace AspxToCode.Parser
 {
     public static class Html
     {
-        public static List<string> GetCode(string source)
+        public static string CleanHtml(string source)
         {
-            List<string> ret = new();
-
             var config = Configuration.Default;
 
             using var context = BrowsingContext.New(config);
             var doc = GetDocument(context, source);
+
+            return doc.ToHtml();
+        }
+
+        public static List<string> ParseHtml(string source)
+        {
+            var ret = new List<string>();
+
+            /*
+            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+            htmlDoc.LoadHtml(source);
+
+            var nodes = htmlDoc.DocumentNode.Descendants().ToList();
+
+            foreach (var node in nodes)
+            {
+                
+            }
+            */
+
+            var reader = new Sgml.SgmlReader();
+
+            reader.InputStream = new StringReader(source);
+            while (!reader.EOF)
+            {
+                reader.Read();
+            }
+
 
             return ret;
         }

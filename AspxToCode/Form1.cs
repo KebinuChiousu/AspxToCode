@@ -14,7 +14,10 @@ namespace AspxToCode
         {
             var source = txtSource.Text;
 
-            var code = Html.GetCode(source);
+            var code = Html.ParseHtml(source);
+            
+
+            txtDest.Text = string.Join(Environment.NewLine, code);
         }
     }
 }
